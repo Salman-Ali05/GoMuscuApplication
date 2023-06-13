@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">GoMuscuApp</string>
+    <string name="btnGym">Gym exercices</string>
+    <string name="btnCardio">Cardio exercices</string>
+    <string name="btnProfil">Profil</string>
+    <string name="btnRetour">Retour</string>
+</resources>
