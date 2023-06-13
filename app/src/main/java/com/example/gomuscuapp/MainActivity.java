@@ -9,6 +9,7 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
+    //Retrofit retrofit = new retrofit.builder().baseURL("");
     Button goToGym; //gym page button
     Button goToCardio; //cardio page button
     Button goToProfil; //profil page button
