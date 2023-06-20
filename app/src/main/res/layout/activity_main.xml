@@ -54,10 +54,18 @@
             android:text="@string/btnProfil" />
 
         <Button
+<<<<<<< HEAD
             android:id="@+id/btnGym"
             android:layout_width="380dp"
             android:layout_height="wrap_content"
             android:text="@string/btnGym" />
+=======
+            android:id="@+id/buttonTestApi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Test" />
+
+>>>>>>> Ali
     </LinearLayout>
 
 
