@@ -47,6 +47,12 @@
                 android:text="@string/btnProfil" />
         </LinearLayout>
 
+        <Button
+            android:id="@+id/buttonTestApi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Test" />
+
     </LinearLayout>
 
 

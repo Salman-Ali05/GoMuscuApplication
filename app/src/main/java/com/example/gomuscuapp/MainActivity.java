@@ -50,5 +50,17 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Button goToTest;
+
+        goToTest = findViewById(R.id.buttonTestApi);
+        goToTest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("api page");
+                Intent intent = new Intent(MainActivity.this, TestApi.class);
+                startActivity(intent);
+            }
+        });
     }
 }
