@@ -7,12 +7,15 @@
     tools:context=".MainActivity">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="32dp"
-        tools:layout_editor_absoluteY="-163dp">
+        android:id="@+id/linearLayout2"
+        android:layout_width="216dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginEnd="150dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="49dp">
 
         <TextView
             android:id="@+id/textViewTitle"
@@ -21,38 +24,44 @@
             android:text="@string/app_name"
             android:textSize="24sp"
             android:textStyle="bold" />
+    </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btnGym"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/btnGym" />
-
-            <Button
-                android:id="@+id/btnCardio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/btnCardio" />
-
-            <Button
-                android:id="@+id/btnProfil"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/btnProfil" />
-        </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="180dp"
+        android:layout_marginBottom="413dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
         <Button
-            android:id="@+id/buttonTestApi"
-            android:layout_width="match_parent"
+            android:id="@+id/btnCardio"
+            android:layout_width="380dp"
             android:layout_height="wrap_content"
-            android:text="Test" />
+            android:text="@string/btnCardio"
+            android:backgroundTint="#EFDCAC"
+            />
 
+        <Button
+            android:id="@+id/btnProfil"
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:text="@string/btnProfil"
+            android:backgroundTint="#EFDCAC"
+            />
+
+        <Button
+            android:id="@+id/btnGym"
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:text="@string/btnGym"
+            android:backgroundTint="#EFDCAC"
+            />
     </LinearLayout>
 
 

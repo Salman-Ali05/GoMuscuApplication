@@ -6,13 +6,93 @@
     android:layout_height="match_parent"
     tools:context=".ProfilActivity">
 
-    <Button
-        android:id="@+id/btnRetour"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/btnRetour"
-        android:layout_margin="16dp"
+    <LinearLayout
+        android:layout_width="412dp"
+        android:layout_height="272dp"
+        android:background="@color/beige"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="-1dp"
+        tools:layout_editor_absoluteY="3dp">
+
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="142dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="8dp"
+            android:rotationX="-4"
+            app:srcCompat="@drawable/pdp" />
+
+        <LinearLayout
+            android:layout_width="138dp"
+            android:layout_height="76dp"
+            android:layout_marginTop="90dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Prénom"
+                android:textSize="30dp" />
+
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nom"
+                android:textSize="30dp"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="236dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="320dp"
+        android:layout_marginEnd="175dp"
+        android:layout_marginBottom="3dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+        <Button
+            android:id="@+id/btnRetour"
+            android:layout_width="138dp"
+            android:layout_height="36dp"
+            android:layout_margin="16dp"
+            android:text="@string/btnRetour"
+            android:backgroundTint="#EFDCAC"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+
+            android:layout_width="376dp"
+            android:layout_height="54dp"
+            android:orientation="horizontal"
+            android:background="@color/beige"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="374dp">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="379dp"
+        android:layout_height="53dp"
+        android:background="@color/beige"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="448dp">
+
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
