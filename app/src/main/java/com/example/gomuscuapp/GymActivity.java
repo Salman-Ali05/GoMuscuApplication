@@ -15,21 +15,21 @@ import android.widget.TextView;
 public class GymActivity extends AppCompatActivity {
 
     private static final String[] muscleNameList = {
-            "Abdominals",
-            "Abductors",
-            "Biceps",
-            "Calves",
-            "Chest",
-            "Forearms",
-            "Glutes",
-            "Hamstrings",
-            "Lats",
-            "Lower back",
-            "Middle back",
-            "Neck",
-            "Quadriceps",
-            "Traps",
-            "Triceps"
+            "abdominals",
+            "abductors",
+            "biceps",
+            "calves",
+            "chest",
+            "forearms",
+            "glutes",
+            "hamstrings",
+            "lats",
+            "lower_back",
+            "middle_back",
+            "neck",
+            "quadriceps",
+            "traps",
+            "triceps"
     };
 
     Button retour;
@@ -69,6 +69,21 @@ public class GymActivity extends AppCompatActivity {
         public void onBindViewHolder(ViewHolder holder, int position) {
             String muscleName = muscleNameList[position];
             holder.bind(muscleName);
+
+            // Set click listener on the textView
+            holder.textView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Get the clicked position
+                    int clickedPosition = holder.getAdapterPosition();
+                    // Get the muscle name based on the position
+                    String clickedMuscleName = muscleNameList[clickedPosition];
+                    // Pass the muscle name to the next activity
+                    Intent intent = new Intent(GymActivity.this, Activity_details.class);
+                    intent.putExtra("muscleName", clickedMuscleName);
+                    startActivity(intent);
+                }
+            });
         }
 
         @Override
@@ -90,4 +105,5 @@ public class GymActivity extends AppCompatActivity {
             }
         }
     }
+
 }

@@ -5,7 +5,9 @@
     android:orientation="vertical"
     android:gravity="center"
     android:background="@color/beige"
-    android:layout_margin="5dp">
+    android:layout_margin="5dp"
+    android:clickable="true"
+    android:focusable="true">
 
     <ScrollView
         android:layout_width="match_parent"
