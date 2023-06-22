@@ -1,16 +1,16 @@
 package com.example.gomuscuapp;
 
+import com.example.gomuscuapp.Exercise;
+
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
-
 import java.util.List;
 
-public interface ExerciceApi {
-    @GET("v1/exercises")
-    Call<List<Exercices>> getExercisesByMuscle(
+public interface ExerciseApi {
+    @GET("exercises")
+    Call<List<Exercise>> getExercisesByMuscle(
             @Query("muscle") String muscle,
-            @Query("api_key") String apiKey
+            @Query("apiKey") String apiKey
     );
 }
-

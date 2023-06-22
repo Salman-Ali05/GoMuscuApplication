@@ -1,32 +1,38 @@
 package com.example.gomuscuapp;
 
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+import java.util.List;
 
 public class ApiClient {
-    private static final String BASE_URL = "https://api.api-ninjas.com/";
+
+    private static final String BASE_URL = "https://api.api-ninjas.com/v1/";
     private static final String API_KEY = "0fSoE6wmC8tp9P82namp2A==tIwwgtrd8ZuCZ3Wg";
+    private static final String API_ENDPOINT = "exercises";
 
-    private OkHttpClient client;
+    private static ApiClient instance;
+    private ExerciseApi exerciseApi;
 
-    public ApiClient() {
-        client = new OkHttpClient();
-    }
-
-    public void getExercisesByMuscle(String muscle, Callback callback) {
-        String apiEndpoint = BASE_URL + "v1/exercises?type=strength&muscle=" + muscle;
-        Request request = new Request.Builder()
-                .url(apiEndpoint)
-                .addHeader("X-Api-Key", API_KEY)
+    private ApiClient() {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        client.newCall(request).enqueue(callback);
+        exerciseApi = retrofit.create(ExerciseApi.class);
     }
 
-    // Other API request methods here
+    public static ApiClient getInstance() {
+        if (instance == null) {
+            instance = new ApiClient();
+        }
+        return instance;
+    }
 
-    // Add any necessary helper methods or data models for processing the API response
+    public void getExercisesByMuscle(String muscleName, Callback<List<Exercise>> callback) {
+        Call<List<Exercise>> call = exerciseApi.getExercisesByMuscle(muscleName, API_KEY);
+        call.enqueue(callback);
+    }
 }

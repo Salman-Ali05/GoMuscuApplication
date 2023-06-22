@@ -18,9 +18,6 @@
             android:name=".Activity_details"
             android:exported="false" />
         <activity
-            android:name=".TestApi"
-            android:exported="false" />
-        <activity
             android:name=".CardioActivity"
             android:exported="false" />
         <activity
