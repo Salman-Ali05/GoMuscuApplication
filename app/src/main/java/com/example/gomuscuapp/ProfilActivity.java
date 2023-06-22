@@ -7,6 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class ProfilActivity extends AppCompatActivity {
     Button retour;
     @Override
@@ -20,6 +24,20 @@ public class ProfilActivity extends AppCompatActivity {
                 System.out.println("Gym page");
                 Intent intent = new Intent(ProfilActivity.this, MainActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        UsersApiService usersApiService = new UsersApiService();
+
+        usersApiService.getUser().enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+
             }
         });
     }
