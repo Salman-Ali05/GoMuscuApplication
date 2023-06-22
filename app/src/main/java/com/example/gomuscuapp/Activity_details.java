@@ -1,9 +1,14 @@
 package com.example.gomuscuapp;
 
 import android.os.Bundle;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 
@@ -18,7 +23,7 @@ public class Activity_details extends AppCompatActivity {
     private static final String API_KEY = "0fSoE6wmC8tp9P82namp2A==tIwwgtrd8ZuCZ3Wg";
     private static final String BASE_URL = "https://api.api-ninjas.com/v1/";
     private static final String API_ENDPOINT = "exercises";
-    private TextView muscleNameTextView;
+    private LinearLayout exerciseContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,11 +33,8 @@ public class Activity_details extends AppCompatActivity {
         // Retrieve the muscle name from the intent extras
         String muscleName = getIntent().getStringExtra("muscleName");
 
-        // Find the TextView in your layout
-        muscleNameTextView = findViewById(R.id.txtMuscleName);
-
-        // Set the muscle name to the TextView
-        muscleNameTextView.setText(muscleName);
+        // Find the exercise container in your layout
+        exerciseContainer = findViewById(R.id.exerciseContainer);
 
         makeApiRequest(muscleName);
     }
@@ -48,34 +50,76 @@ public class Activity_details extends AppCompatActivity {
 
         client.newCall(request).enqueue(new Callback() {
             @Override
-            public void onFailure(Call call, IOException e) {
-                e.printStackTrace();
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        muscleNameTextView.setText("Error: " + e.getMessage());
-                    }
-                });
-            }
-
-            @Override
             public void onResponse(Call call, Response response) throws IOException {
                 final String responseData = response.body().string();
                 if (response.isSuccessful()) {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            muscleNameTextView.setText(responseData);
+                            try {
+                                JSONArray jsonArray = new JSONArray(responseData);
+                                exerciseContainer.removeAllViews(); // Clear existing views
+
+                                for (int i = 0; i < jsonArray.length(); i++) {
+                                    JSONObject exercise = jsonArray.getJSONObject(i);
+                                    String exerciseName = exercise.getString("name");
+                                    String exerciseEquip = exercise.getString("equipment");
+                                    String exerciseMuscle = exercise.getString("muscle");
+                                    String exerciseDiff = exercise.getString("difficulty");
+                                    String exerciseInstruc = exercise.getString("instructions");
+
+                                    // Create a new TextView for each exercise detail
+                                    TextView exerciseNameTextView = new TextView(Activity_details.this);
+                                    exerciseNameTextView.setText("Exercise Name: " + exerciseName);
+                                    exerciseContainer.addView(exerciseNameTextView);
+
+                                    TextView exerciseEquipTextView = new TextView(Activity_details.this);
+                                    exerciseEquipTextView.setText("Equipment: " + exerciseEquip);
+                                    exerciseContainer.addView(exerciseEquipTextView);
+
+                                    TextView exerciseMuscleTextView = new TextView(Activity_details.this);
+                                    exerciseMuscleTextView.setText("Muscle: " + exerciseMuscle);
+                                    exerciseContainer.addView(exerciseMuscleTextView);
+
+                                    TextView exerciseDiffTextView = new TextView(Activity_details.this);
+                                    exerciseDiffTextView.setText("Difficulty: " + exerciseDiff);
+                                    exerciseContainer.addView(exerciseDiffTextView);
+
+                                    TextView exerciseInstrucTextView = new TextView(Activity_details.this);
+                                    exerciseInstrucTextView.setText("Instructions: " + exerciseInstruc);
+                                    exerciseContainer.addView(exerciseInstrucTextView);
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                                TextView errorTextView = new TextView(Activity_details.this);
+                                errorTextView.setText("Error: Failed to parse exercise data");
+                                exerciseContainer.addView(errorTextView);
+                            }
                         }
                     });
                 } else {
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            muscleNameTextView.setText("Error: " + response.code() + " " + responseData);
+                            TextView errorTextView = new TextView(Activity_details.this);
+                            errorTextView.setText("Error: " + response.code() + " " + responseData);
+                            exerciseContainer.addView(errorTextView);
                         }
                     });
                 }
+            }
+
+            @Override
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        TextView errorTextView = new TextView(Activity_details.this);
+                        errorTextView.setText("Error: " + e.getMessage());
+                        exerciseContainer.addView(errorTextView);
+                    }
+                });
             }
         });
     }
