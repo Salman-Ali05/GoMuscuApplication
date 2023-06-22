@@ -4,19 +4,20 @@
     android:layout_height="match_parent">
 
     <LinearLayout
+        android:id="@+id/container_items"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_marginLeft="15dp"
         android:gravity="center"
-        android:layout_marginLeft="15dp">
+        android:orientation="vertical">
 
         <Button
             android:id="@+id/btnRetour"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/btnRetour"
             android:layout_margin="16dp"
-            android:backgroundTint="@color/beige"/>
+            android:backgroundTint="@color/beige"
+            android:text="@string/btnRetour" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
