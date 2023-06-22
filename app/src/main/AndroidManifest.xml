@@ -15,6 +15,9 @@
         android:theme="@style/Theme.GoMuscuApp"
         tools:targetApi="31">
         <activity
+            android:name=".Activity_details"
+            android:exported="false" />
+        <activity
             android:name=".TestApi"
             android:exported="false" />
         <activity
