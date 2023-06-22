@@ -131,7 +131,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:background="@drawable/rounded_background">
-                android:orientation="horizontal" />
+                />
 
                 <TextView
                     android:id="@+id/progression_muscu"
