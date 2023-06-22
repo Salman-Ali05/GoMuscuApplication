@@ -99,8 +99,9 @@
                 android:layout_height="79dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:background="@color/beige"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:background="@drawable/rounded_background">
+                >
 
                 <TextView
                     android:id="@+id/progression_cardio"
@@ -129,10 +130,8 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:background="@color/beige"
-                android:orientation="horizontal"
-
-                >
+                android:background="@drawable/rounded_background">
+                android:orientation="horizontal" />
 
                 <TextView
                     android:id="@+id/progression_muscu"
