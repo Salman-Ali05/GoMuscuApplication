@@ -10,18 +10,19 @@
     android:background="@drawable/rounded_background">
     >
 
+    <TextView
+        android:id="@+id/txtMuscleName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
 
-        <TextView
-            android:id="@+id/txtMuscleName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:textColor="@android:color/black"
-            android:padding="10dp" />
-
     </ScrollView>
+
 </LinearLayout>
