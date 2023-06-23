@@ -1,6 +1,9 @@
 package com.example.gomuscuapp;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -9,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.io.IOException;
 
@@ -25,15 +29,28 @@ public class Activity_details extends AppCompatActivity {
     private static final String API_ENDPOINT = "exercises";
     private LinearLayout exerciseContainer;
 
+    Button retour;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
 
-        // Retrieve the muscle name from the intent extras
-        String muscleName = getIntent().getStringExtra("muscleName");
+        retour = findViewById(R.id.btnRetour);
+        TextView txtMuscle = findViewById(R.id.txtMuscle);
 
-        // Find the exercise container in your layout
+        retour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("Gym page");
+                Intent intent = new Intent(Activity_details.this, GymActivity.class);
+                startActivity(intent);
+            }
+        });
+        String muscleName = getIntent().getStringExtra("muscleName");
+        txtMuscle.setText(muscleName.toUpperCase());
+
+
         exerciseContainer = findViewById(R.id.exerciseContainer);
 
         makeApiRequest(muscleName);
@@ -58,36 +75,27 @@ public class Activity_details extends AppCompatActivity {
                         public void run() {
                             try {
                                 JSONArray jsonArray = new JSONArray(responseData);
-                                exerciseContainer.removeAllViews(); // Clear existing views
-
+                                exerciseContainer.removeAllViews();
                                 for (int i = 0; i < jsonArray.length(); i++) {
                                     JSONObject exercise = jsonArray.getJSONObject(i);
                                     String exerciseName = exercise.getString("name");
                                     String exerciseEquip = exercise.getString("equipment");
-                                    String exerciseMuscle = exercise.getString("muscle");
                                     String exerciseDiff = exercise.getString("difficulty");
                                     String exerciseInstruc = exercise.getString("instructions");
 
-                                    // Create a new TextView for each exercise detail
-                                    TextView exerciseNameTextView = new TextView(Activity_details.this);
+                                    View exerciseItemView = getLayoutInflater().inflate(R.layout.item_muscle_div, exerciseContainer, false);
+
+                                    TextView exerciseNameTextView = exerciseItemView.findViewById(R.id.txtExerciseName);
+                                    TextView exerciseEquipTextView = exerciseItemView.findViewById(R.id.txtExerciseEquipment);
+                                    TextView exerciseDiffTextView = exerciseItemView.findViewById(R.id.txtExerciseDifficulty);
+                                    TextView exerciseInstrucTextView = exerciseItemView.findViewById(R.id.txtExerciseInstructions);
+
                                     exerciseNameTextView.setText("Exercise Name: " + exerciseName);
-                                    exerciseContainer.addView(exerciseNameTextView);
-
-                                    TextView exerciseEquipTextView = new TextView(Activity_details.this);
                                     exerciseEquipTextView.setText("Equipment: " + exerciseEquip);
-                                    exerciseContainer.addView(exerciseEquipTextView);
-
-                                    TextView exerciseMuscleTextView = new TextView(Activity_details.this);
-                                    exerciseMuscleTextView.setText("Muscle: " + exerciseMuscle);
-                                    exerciseContainer.addView(exerciseMuscleTextView);
-
-                                    TextView exerciseDiffTextView = new TextView(Activity_details.this);
                                     exerciseDiffTextView.setText("Difficulty: " + exerciseDiff);
-                                    exerciseContainer.addView(exerciseDiffTextView);
-
-                                    TextView exerciseInstrucTextView = new TextView(Activity_details.this);
                                     exerciseInstrucTextView.setText("Instructions: " + exerciseInstruc);
-                                    exerciseContainer.addView(exerciseInstrucTextView);
+
+                                    exerciseContainer.addView(exerciseItemView);
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
