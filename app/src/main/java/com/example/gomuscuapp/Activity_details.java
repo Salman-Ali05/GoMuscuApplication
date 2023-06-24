@@ -59,7 +59,7 @@ public class Activity_details extends AppCompatActivity {
     private void makeApiRequest(String muscleName) {
         OkHttpClient client = new OkHttpClient();
 
-        String apiEndpoint = BASE_URL + API_ENDPOINT + "?muscle=" + muscleName;
+        String apiEndpoint = BASE_URL + API_ENDPOINT + "?type=strength&muscle=" + muscleName;
         Request request = new Request.Builder()
                 .url(apiEndpoint)
                 .addHeader("X-Api-Key", API_KEY)
