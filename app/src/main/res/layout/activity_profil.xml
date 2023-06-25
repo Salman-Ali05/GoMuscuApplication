@@ -37,7 +37,7 @@
                 android:id="@+id/FirstName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Prénom"
+                android:text="@string/txtPrenom"
                 android:textSize="30dp" />
 
 
@@ -45,7 +45,7 @@
                 android:id="@+id/LastName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Nom"
+                android:text="@string/txtNom"
                 android:textSize="30dp" />
         </LinearLayout>
 
@@ -62,7 +62,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3">
+        app:layout_constraintTop_toBottomOf="@+id/container_firstName_LastName">
 
         <Button
             android:id="@+id/btnRetour"
@@ -70,7 +70,8 @@
             android:layout_height="40dp"
             android:layout_margin="16dp"
             android:backgroundTint="#EFDCAC"
-            android:text="@string/btnRetour" />
+            android:text="@string/btnRetour"
+            android:textColor="@color/black"/>
     </LinearLayout>
 
     <LinearLayout

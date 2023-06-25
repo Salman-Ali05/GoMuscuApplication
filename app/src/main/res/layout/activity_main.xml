@@ -24,7 +24,8 @@
             android:layout_height="wrap_content"
             android:text="@string/app_name"
             android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColor="@color/white"/>
     </LinearLayout>
 
     <LinearLayout
@@ -42,25 +43,28 @@
         app:layout_constraintTop_toBottomOf="@+id/container_title">
 
         <Button
-            android:id="@+id/btnCardio"
-            android:layout_width="380dp"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#EFDCAC"
-            android:text="@string/btnCardio" />
-
-        <Button
             android:id="@+id/btnProfil"
             android:layout_width="380dp"
             android:layout_height="wrap_content"
             android:backgroundTint="#EFDCAC"
-            android:text="@string/btnProfil" />
+            android:text="@string/btnProfil"
+            android:textColor="@color/black" />
+
+        <Button
+            android:id="@+id/btnCardio"
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#EFDCAC"
+            android:text="@string/btnCardio"
+            android:textColor="@color/black"/>
 
         <Button
             android:id="@+id/btnGym"
             android:layout_width="380dp"
             android:layout_height="wrap_content"
             android:backgroundTint="#EFDCAC"
-            android:text="@string/btnGym" />
+            android:text="@string/btnGym"
+            android:textColor="@color/black"/>
     </LinearLayout>
 
 

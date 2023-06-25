@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/lightBlack">
 
     <LinearLayout
         android:id="@+id/container_items"
@@ -9,7 +10,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@color/lightBlack">
 
         <Button
             android:id="@+id/btnRetour"
@@ -17,7 +19,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:backgroundTint="@color/beige"
-            android:text="@string/btnRetour" />
+            android:text="@string/btnRetour"
+            android:textColor="@color/black" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"

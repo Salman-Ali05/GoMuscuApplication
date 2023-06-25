@@ -4,4 +4,6 @@
     <string name="btnCardio">Cardio exercices</string>
     <string name="btnProfil">Profil</string>
     <string name="btnRetour">Retour</string>
+    <string name="txtNom">Nom</string>
+    <string name="txtPrenom">Prénom</string>
 </resources>

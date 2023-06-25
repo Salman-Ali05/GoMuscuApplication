@@ -15,7 +15,8 @@
         android:text="@string/btnRetour"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/black"/>
 
     <LinearLayout
         android:id="@+id/linearLayoutMuscleName"
@@ -23,7 +24,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="16dp"
-        tools:ignore="MissingConstraints">
+        tools:ignore="MissingConstraints"
+        android:background="@color/lightBlack">
 
         <TextView
             android:id="@+id/txtMuscle"
