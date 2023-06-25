@@ -13,4 +13,9 @@ public interface ExerciseApi {
             @Query("muscle") String muscle,
             @Query("apiKey") String apiKey
     );
+
+    @GET("exercises&type=cardio")
+    Call<List<CardioEx>> getCardioEx(
+            @Query("apiKey") String apiKey
+    );
 }
