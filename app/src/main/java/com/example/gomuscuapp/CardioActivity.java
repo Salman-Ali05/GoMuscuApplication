@@ -42,7 +42,7 @@ public class CardioActivity extends AppCompatActivity {
         retour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("Gym page");
+                System.out.println("Cardio page");
                 Intent intent = new Intent(CardioActivity.this, MainActivity.class);
                 startActivity(intent);
             }
@@ -75,8 +75,7 @@ public class CardioActivity extends AppCompatActivity {
                                 JSONArray jsonArray = new JSONArray(responseData);
                                 exerciseContainer.removeAllViews();
                                 for (int i = 0; i < jsonArray.length(); i++) {
-                                    System.out.println(jsonArray);
-                                    /*
+
                                     JSONObject exercise = jsonArray.getJSONObject(i);
                                     String cardioName = exercise.getString("name");
                                     String cardioEquip = exercise.getString("equipment");
@@ -96,8 +95,6 @@ public class CardioActivity extends AppCompatActivity {
                                     cardioInstrucTextView.setText("Instructions: " + cardioInstruc);
 
                                     exerciseContainer.addView(exerciseItemView);
-
-                                     */
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
