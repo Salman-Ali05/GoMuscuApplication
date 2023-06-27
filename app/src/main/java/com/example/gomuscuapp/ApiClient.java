@@ -14,6 +14,7 @@ public class ApiClient {
 
     private static ApiClient instance;
     private ExerciseApi exerciseApi;
+    private UserApi userApi;
 
     private ApiClient() {
         Retrofit retrofit = new Retrofit.Builder()
@@ -22,6 +23,15 @@ public class ApiClient {
                 .build();
 
         exerciseApi = retrofit.create(ExerciseApi.class);
+    }
+
+    ApiClient(String baseUrl) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(baseUrl)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        userApi = retrofit.create(UserApi.class);
     }
 
     public static ApiClient getInstance() {
@@ -34,5 +44,9 @@ public class ApiClient {
     public void getExercisesByMuscle(String muscleName, Callback<List<Exercise>> callback) {
         Call<List<Exercise>> call = exerciseApi.getExercisesByMuscle(muscleName, API_KEY);
         call.enqueue(callback);
+    }
+
+    public UserApi getUserApi() {
+        return userApi;
     }
 }
